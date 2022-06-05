@@ -1,0 +1,215 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{PROGRAMLAMA LABORATUVARI 2\\
+2. PROJE\\
+BİLGİSAYAR MÜHENDİSLİĞİ BÖLÜMÜ\\
+KOCAELİ ÜNİVERSİTESİ}
+
+\author{
+\IEEEauthorblockN{ÖMER FARUK KOŞAR} \\
+\textbf{omerpvo41@hotmail.com}
+\and
+\IEEEauthorblockN{ÖMER FARUK ZORLU} \\
+\textbf{zobzorlu41@gmail.com}
+}
+
+\maketitle
+
+\section{ÖZET}
+Bu belge Programlama Laboratuvarı 2 dersinin 2. projesi için
+oluşturulmuştur. Belgede akış diyagramı, özet, giriş, yöntem, 
+deneysel sonuçlar gibi projeyi açıklayan başlıklara yer verilmiştir. Belge sonunda projenin sonucu ve projeyi hazırlarken kullandığımız kaynaklar bulunmaktadır
+
+\section{GİRİŞ}
+
+Bu projenin amacı, Arduino üzerinde çalışan bir akıllı ev simülasyonu yapmaktır.
+
+Akıllı Ev Sistemleri Nesnelerin İnterneti uygulamalarının yaygınlaşması ile insanların nesneler ile olan iletişiminin yanı sıra nesnelerin nesneler ile olan iletişimi gün geçtikçe önem arz etmekte ve bu alandaki çalışmalar artmaktadır. Bu çalışmalardan birisi Akıllı Ev Sistemleri’dir.
+Ev ortamında gerçekleştirilen faaliyetleri kolaylaştıran, güvenilir bir ortam sağlayan ve insan hayatına konfor, rahatlık veren ev otomasyonu sistemlerine Akıllı Ev denilmektedir. 
+
+Akıllı ev, ev teknolojileri endüstrinin birçok alanında kullanılan kontrol sistemlerinin gündelik hayata uyarlanması; ev otomasyonu ise bu teknolojilerin kişiye özel ihtiyaç ve isteklerine uygulanmasıdır. Akıllı ev tanımı, bütün bu teknolojiler sayesinde ev sakinlerinin ihtiyaçlarına cevap verebilen, onların hayatlarını kolaylaştıran ve daha güvenli daha konforlu ve daha tasarruflu bir yaşam sunan evler için kullanılmaktadır.
+Akıllı evler, otomatik fonksiyonları ve sistemleri kullanıcı tarafından uzaktan kontrol edilebilen cihazları içerirler.
+
+Akıllı ev sisteminin en büyük avantajlarından biri üstün bir güvenlik sağlamasıdır. Evinizde hırsızlığa, yangına ve birçok riske karşı koruma sağlanır. Akıllı evde kurulan sistem en küçük bir tehlikeyi bile haber vererek uyarır. Akıllı ev sistemi ısıtma ve aydınlatma sistemini istediğiniz zaman açıp kapatma şansı sunarak büyük bir tasarruf sağlamanıza olanak tanır.Biz evde yokken ısınma ve aydınlatma sisteminin açık kalma riski olmadığından enerji tasarrufu sağlanır. Akıllı ev sistemi evinize gelmeden önce ısıtma sistemini çalıştırmamızı, kahvemizin hazırlanmasını sağlamaya veya müziğimizi açabilmemizi sağlayarak harika bir konfor olanağı sunar.Akıllı ev sistemleri ile hayatımız daha güvenli ve konforlu hale gelir. 
+
+Akıllı ev sistemlerinde bulunabilecek bazı özellikler:
+
+• Çok odalı ses sistemleri,
+
+• Akıllı hoparlörler ,
+
+• Ev güvenlik kameraları,
+
+• Akıllı mutfak aletleri,
+
+• Akıllı termostatlar,
+
+• Otomatik ısı sabitleme,
+
+• Odalarda ışık kontrolü,
+
+• Perdelerin açılıp kapanma kontrolü,
+
+• Garaj kapısı kontrolü,
+
+• Hırsız alarm sistemi,
+
+• Ev ile ilgili bilgilerin telefondan otomatik alınması,
+
+• Otomatik toprak sulama sistemi
+
+Projede yapılması istenen isterlere gelicek olursak bizden Proteus programında Arduino kartı akıllı ev sistemi oluşturmamız isteniyor. Sistemin içerisinde yangın alarmı, hareket algılayan ışık sistemi, dijital termometre ve kilit sistemini kullanmamız gerekiyor.
+
+Bize verilen sensör ve elemanları şu şekildedir:
+
+İlk istenilen Arduino kartı olarak Arduino Mega kullanmamız isteniyor.
+
+İkinci olarak yangın sensörü ve buzzer kullanmamız isteniyor. Yangın tespit edildiğinde ise alarm çalmasını sağlayacağız.
+
+Üçüncü ister hareket sensörü ve lamba kullanmamız isteniyor. Hareket tespit edildiğinde lambanın yanmasını sağlayacağız.
+
+Dördüncü ister sıcaklık sensörü ve LCD ekran kullanmamız isteniyor. Algılanan sıcaklığın devamlı olarak LCD ekranda gösterilmesi sağlayacağız. Sıcaklık 20 C’nin altına düştüğünde ekrana “Sıcaklık düştü”, 30 C’nin üstüne çıktığında “Sıcaklık yükseldi” yazdıracağız.
+
+Beşinci ister tuş takımı (keypad), kırmızı ve yeşil led kullanmamız isteniyor. Keypad ile girilecek 4 haneli bir şifre belirleyeceğiz. Şifre yanlış girildiğinde kırmızı, doğru girildiğinde yeşil ledin yanmasını sağlayacağız.
+
+Projenin kısıtları gelicek olursak bizden sadece Arduino IDE ve Proteus programları kullanılarak geliştirmemiz, belirtilen bütün sensörlerin kullanmamız ve başka sensörler eklemememiz isteniyor.
+
+
+\section{YÖNTEM}
+Proje için Arduino ve Proteus geliştirme ortamı kullanılmıştır.
+
+Proteus görsel olarak elektronik devrelerin simülasyonunu yapabilen yetenekli bir devre çizimi, simülasyonu, animasyonu ve PCB çizimi programıdır. Labcenter Electronic firmasının bir ürünüdür. Klasik workbench’lerden en önemli farkı mikroişlemcilere yüklenen HEX dosyalarını da çalıştırabilmesidir.
+
+Arduino ise bir G/Ç kartı ve Processing/Wiring dilinin bir uygulamasını içeren geliştirme ortamından oluşan bir fiziksel programlama platformudur.
+
+Projenin yöntemine gelicek olursak öncelikle Proteus indirdik. Bilgisayarımıza Proteusun 8.10 sürümünü kurduk daha sonra Arduinoyu indirdik.Arduino kodlarını yazarken araçlar kısmından kartlardan Arduino mega kartını seçtik.Kodlarımızı yazdıktan sonra taslak kısmından derlenmiş binary'i çıkar diyerek .hex dosyamızı oluşturduk.Hex dosyası, mikrodenetleyicileri gibi programlanabilir mantık aygıtları tarafından kullanılan onaltılık bir kaynak dosyasıdır. Onaltılık biçimde kaydedilmiş ayarları, yapılandırma bilgilerini veya diğer verileri içerir. HEX dosyaları ikili veya metin biçiminde depolanabilir. Oluşturduğumuz bu hex dosyasını proteusta mega kartının içine yükleyerek proteusta simülasyonumuzun çalışmasını sağladık.
+
+Arduino kodunu yazarken yaptığımız aşamalar:
+
+İlk olarak lcd ve keypad kütüphanesini tanımladık.
+
+Taslak seçeneğinden library ekle kısmından .ZIP kitaplığı ekleye tıklayarak arduino kodumuza keypad'i ekledik.
+
+Keypadin satır sayısı,sütün sayısı ve tuş yapısını oluşturduk.
+
+Yeşil led ve kırmızı ledi oluşturduk.
+
+Girilen şifreyi tutup kendimizin belirlediği şifreyi yazdık.
+
+Hareket sensörü,lamba,buzzer ve yangın sensörü için çıkış pinini belirledik.
+
+LM35 A10 pinine atandı. LM35 analog değer ürettiği için analog pinden okuma işlemi yapılması gerekir ve sadece analog pinlere bağlanır.
+
+Keypad bağlantı pinlerini oluşturduk.
+
+Lcd pinlerini yazdık ve keypad tanımlamasını yaptık.
+ 
+Serial.begin seri port haberleşmesini başlatıyor onu yazdık.
+
+Led pinlerini çıkış olarak belirttik.
+ 
+Lcd haberleşmesini sağladık.
+
+Setcursor'u lcd de yazı yazmak için ve başlangıç noktasını belirlemek için kullandık.
+ 
+Hareket sensörü ve yangın sensörünü giriş olarak ayarlandı. Lamba ve buzzer pini çıkış ayarlandı.LM35 için A10 pini giriş olarak ayarlandı.
+
+Hareket sensörü, sıcaklık, şifre girme ve yangın sensörü işlemleri alt fonksiyon olarak yazıldı ve çağrıldı.
+
+Şifre girme fonksiyonun amacı girilen şifre ile kapının şifresini karşılaştırıp doğru girme durumunda yeşil,yanlış girme durumunda kırmızı ledi yakmasıdır.
+Fonksiyonumuz ilk olarak keypad ile basılan tuşun keypad.getKey() fonksiyonu ile okuyor.Sonrasında basılan tuşun boş olmaması durumunda girilensifre[] adlı karakter dizinin elemanlarına sırasıyla atıyor.Dizimiz 4 haneye ulaştığı zaman artık girilen şifrenin doğru olup olmadığını kontrol etmek kalıyor.Girilen şifre ve parola karakter dizilerinin indislerini sırasıyla kontrol edip 1(doğru) döndürmesi durumunda yeşil ledi aktif hale getiriyor. Şayet kontrol 0(yanlış) dönerse kırmızı ledimiz aktif hale geliyor.
+
+Hareket sensörü fonksiyonunda amacımız hareket sensörü kullanarak hareket algılanması durumunda lambamızı aktif hale getirmektir.İlk olarak boolean bir değişken atadık.Bu değişken sensörden gelen okuma ile birikte değişiyor. 1(aktif) olması durumunda lambamız yanıyor. 0(pasif) olması durumunda ise lambamız sönüyor.
+
+Yangın sensörü fonksiyonunda amacımız buzzerımızı yangın sensörüyle entegre edip yangın alev algılanması durumunda buzzerımızın ötmesidir. Fonksiyonumuz için  atadığımız boolean değişken ile yangın sensöründen alınan girdiyi tutuyoruz.Sensörümüzün 1(alev var) göndermesi durumunda buzzerımız aktif hale gelip ötüyor.
+
+Sıcaklık fonksiyonunda amacımız sıcaklık sensöründen alınan girdiyi LCD ekranımıza yansıtmaktır.Yansıtılan değere göre de bazı mesajlar veriyor olacağız.
+Öncelikle LM35(sıcaklık sensörü)’den alınan girdiyi isi adını verdiğimiz float değişkende tutuyoruz.Sonrasında verdiğimiz float değişkende isi değişkenine uyguladığımız bazı matematiksel işlemlerle değeri santigrat cinsinden tutuyoruz. Sıcaklığı santigrat cinsinden gösteren değerimizi LCD ekrana yansıtıyoruz.Bu değerin 20 C ile 30 C arasında olması durumunda “Sıcaklık Normal” şeklinde mesajı LCD ekrana yansıtmaktadır.Sıcaklığımızın 200 C’den küçük olması durumunda “Sıcaklık Düşük” şeklinde uyarı mesajımızı LCD ekrana yansıtmaktadır.Şayet sıcaklığımız 30 C’den büyükse de “Sıcaklık Yüksek” mesajını LCD ekranımıza yansıtmaktadır.
+
+
+\section{SONUÇ}
+Bu proje sayesinde programlama laboratuvarı dersinde nasıl bir 
+yol izlememiz gerektiğinin farkına varıp aynı zamanda proteus ve arduino üzerinde çalışmalar yaptık.
+
+Proteus simülasyonumuzu arduino ile nasıl çalıştırabileceğimizi öğrendik.
+
+Akıllı ev sistemlerinin bizim hayatımızı nasıl kolaylaştırdığını ne gibi faydaları olduğunu anladık.
+
+Proteusta mega kartının içine hex kodunu nasıl yükleyeceğimi ve .hex dosyasının ne olduğunu öğrendik.
+
+Hareket sensörüyle lambanın nasıl yanacağını, yangın sensörüyle buzzerdan ses çıkmasını, girilen şifreyle ledin kırmızı veya yeşil yanmasını ve sıcaklık sensörüyle lede sıcaklığın yazdırılmasını sağladık.
+
+Overleaf sitesi üzerinden kod parçacıklarını kullanarak latex formatında rapor oluşturmayı öğrendik.
+
+
+\section{KAYNAKÇA}
+http://arduinoturkiye.com/kategori/arduinoya-giris/
+
+http://arduinoturkiye.com/arduino-mega-2560-nedir/
+
+https://www.evde360.com/page/akilli-ev-sistemleri-nedir
+
+http://www.temrinler.com/?p=3669
+
+https://silo.tips/download/akilli-ev-otomasyonu
+
+https://www.youtube.com/watch?v=qIHNVUL3kWA
+
+https://devreyakan.com/arduino-16x2-lcd-ekran-kullanimi/
+
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=0.5\textwidth]{deneyselsonuc1.png}
+\caption{DENEYSEL SONUÇ 1}
+\label{fig2}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.5\textwidth]{deneyselsonuc3.png}
+\caption{DENEYSEL SONUÇ 2}
+\label{fig1}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.4\textwidth]{deneyselsonuc2.png}
+\caption{DENEYSEL SONUÇ 3}
+\label{fig1}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[height=0.55\textwidth]{deneyselsonuc4.png}
+\caption{DENEYSEL SONUÇ 4}
+\label{fig1}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{akış.jpg}
+\caption{AKIŞ DİYAGRAMI}
+\label{fig2}
+\end{figure}
+
+
+
+\end {document}
+
+
+
+
+
+
